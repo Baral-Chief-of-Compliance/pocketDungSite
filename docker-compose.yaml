@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.13.0
+    volumes:
+      - ./elastic:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+
+
+  django-app:
+    build: './src/PocketDungSite'
+    restart: always
+    volumes:
+      - ./src/PocketDungSite/:/home/django-app
+
+    ports:
+      - 8000:8000
+
+    depends_on:
+      - elasticsearch
+
+    links:
+      - elasticsearch:elasticsearch
+
+  
+  nginx:
+    build: './nginx'
+    restart: always
+    ports:
+      - 80:80
+
+    volumes:
+      - ./src/:/home/app/djangoApp
+    depends_on:
+      - django-app
+
+volumes:
+  elastic:

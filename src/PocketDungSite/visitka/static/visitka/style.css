@@ -1,0 +1,114 @@
+@font-face {
+    font-family: "Joystix";
+    src: url("./joystix_monospace.ttf");
+    font-style: normal;
+    font-weight: normal;
+}
+
+
+*{
+    margin: 0%;
+    padding: 0%;
+    background-color: black;
+    box-sizing: border-box;
+}
+
+
+
+body{
+    font-family: "Joystix";
+}
+
+
+
+.info-card{
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+
+
+.game-name{
+    color: white;
+    font-size: 80px;
+    margin-bottom: 20px;
+    animation: apearText 1.5s ;
+}
+
+/* анимация повяления текста */
+@keyframes apearText {
+    0% { color: black; }
+    /* 50% { color: #696969; } */
+    100% { color: white; }
+}
+
+.game-discription{
+    color: white;
+    margin-bottom: 15px;
+    animation: apearText 3s ;
+}
+
+.game-data-release{
+    color: white;
+    animation: apearText 4s ;
+}
+
+/* анимация повяления текста года */
+@keyframes apearTextYear {
+    0% { color: black; }
+    /* 50% { color: #696969; } */
+    100% { color: red; }
+}
+
+#year{
+    color: red;
+    animation: apearTextYear 4s ;
+}
+
+.footer{
+    color: #696969;
+    text-align: center;
+    position: fixed; /* Фиксированное положение */
+    left: 0; bottom: 0; /* Левый нижний угол */
+    width: 100%;
+    height: 25px;
+}
+
+
+@media screen and (max-width: 872px){
+    .game-name{
+        font-size: 60px;
+    }
+
+    .game-discription{
+        font-size: 20px;
+    }
+
+    .game-data-release{
+        font-size: 16px;
+    }
+}
+
+
+@media screen and (max-width: 562px){
+    .game-name{
+        font-size: 40px;
+    }
+
+    .game-discription{
+        font-size: 16px;
+    }
+
+    .game-data-release{
+        font-size: 14px;
+    }
+
+    .footer{
+        font-size: 12px;
+    }
+
+}

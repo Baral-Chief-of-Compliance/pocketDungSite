@@ -1,0 +1,25 @@
+{% extends 'wiki/base.html' %}
+
+{% block title %}
+    Удаление материала -  {{ m_name }}
+{% endblock %}
+
+{% block content %}
+    <h1 id="page-name"><span style="color: red">Вы точно хотите удалить данный материал?</span></h1>
+    <h3><span style="color: red;">Название:</span> {{m_name}} <span style="color: red;">добавленный</span> {{m_date_add}} <span style="color: red;">к статье</span style="color: red;"> {{ i_name }} <h3>
+
+    <div class="choise-delete-material">
+        {% comment %} отказ от удлаения и возвращение на страницу со статьёй {% endcomment %}
+        <div class="delete-btns">
+            <a class="cancel-delete-btn" href="{% url 'wiki:InfoDetails' ic_url iss_url i_id %}">Не-е-ет, не надо дядя!</a>
+        </div>
+
+        <div class="delete-btns">
+            {% comment %} соглашение с этим и удаление статьи {% endcomment %}
+            <form action="{% url 'wiki:deleteMaterial' ic_url iss_url i_id m_id %}" method="POST">
+                {% csrf_token %}
+                <input class="submit-delete-btn" type="submit" value="Да, удаляем!">
+            </form>
+        </div>
+    </div>
+{% endblock %}

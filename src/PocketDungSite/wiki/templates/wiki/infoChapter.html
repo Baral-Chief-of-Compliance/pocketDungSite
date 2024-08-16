@@ -1,0 +1,28 @@
+{% extends 'wiki/base.html' %}
+
+
+{% block title %}
+    Раздел {{ infoChapter.ic_name}}
+{% endblock %}
+
+
+{% block content %}
+    <h1 id="page-name">Раздел WIKI: <span style="color: red">{{infoChapter.ic_name}}</span></h1>
+
+    <h2 class="sub-titel">Его подразделы:</h2>
+
+    {% if infoChapter.ic_subs %}
+        <ul>
+            {% for ic_sub in infoChapter.ic_subs %}
+                <li> <a href="{% url 'wiki:InfoSubSectionDetails' infoChapter.ic_url ic_sub.iss_url %}" >{{ ic_sub.iss_name }}</a> </li>
+            {% endfor %}
+        <ul>
+    {% else %}
+        <p style="margin-bottom:10px;">На данный момент у этого раздела, нет подразделов</p>
+
+        <p style="margin-bottom:10px;">Чтобы создать их, необходимо перейти в Админ Панель</p>
+
+        <p style="margin-bottom:10px;">Если вы не в курсе, как это делать, то советую перейти в раздел <a href='{% url 'wiki:InfoChapterDetails' 'instructions' %}'>Инструкции<a/> </p>
+    {% endif %}
+
+{% endblock %}

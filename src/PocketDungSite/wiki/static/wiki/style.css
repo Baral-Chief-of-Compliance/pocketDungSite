@@ -1,0 +1,631 @@
+@font-face {
+    font-family: "Joystix";
+    src: url("./joystix_monospace.ttf");
+    font-style: normal;
+    font-weight: normal;
+}
+
+
+*{
+    margin: 0;
+	padding: 0;
+}
+
+body{
+    font-family: "Joystix";
+}
+
+
+/* стили для навигационной панели */
+nav{
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    height: 70px;
+    margin-bottom: 25px;
+
+    position: fixed; /* Фиксированное положение */
+    left: 0; top: 0; 
+    width: 100%;
+}
+
+#nav-logo{
+    margin-left: 15%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#name-site{
+    color: white;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#name-site:hover{
+    color: red;  
+    cursor: pointer;
+}
+
+#nav-links{
+    width: 70%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 50px;
+}
+
+nav a{
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+nav a:hover{
+    color: red;
+}
+
+#admin-panel{
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
+    margin-right: 0%;
+}
+
+#vertical-menu{
+    color: white;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
+    margin-right: 15%;
+    visibility: hidden;
+}
+
+#vertical-menu:hover{
+    cursor: pointer;
+    color: red;
+}
+
+#vertical-links{
+    text-align: left;
+    position: fixed; /* Фиксированное положение */
+    left: 0; top: 125px; 
+    width: 100%;
+    background-color: black;
+    padding: 8px;
+}
+
+.vertical-links-open{
+    visibility: visible;
+}
+
+.vertical-links{
+    visibility: hidden;
+}
+
+
+#vertical-links div{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    a{
+        text-decoration: none;
+        color: white;
+    }
+
+    a:hover{
+        color: red;
+    }
+}
+
+#user-block{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 15px;
+    text-align: center;
+}
+
+#user-name{
+    color: red;
+    font-size: 10px;
+    margin-bottom: 10px;
+}
+
+#user-exit{
+    background-color: red;
+    font-family: "Joystix";
+    border: 1px solid red;
+    padding: 2px;
+    margin-top: 10px;
+}
+
+#user-exit:hover{
+    color: white;
+    cursor: pointer;
+}
+
+/* конец блока стиля для навигационной панели */
+
+
+/* стиль блока кнонтента страницы */
+.content{
+    margin-top: 150px;
+    margin-bottom: 25px;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+#page-name{
+    margin-bottom: 25px;
+}
+
+.sub-titel{
+    margin-bottom: 15px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+li a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+li a:hover {
+    color: red;
+}
+
+#back-link{
+    margin-bottom: 25px;
+}
+
+#back-link a{
+    text-decoration: none;
+    color: black;
+    border: solid 1px black;
+    padding: 5px;
+}
+
+#back-link a:hover{
+    color: red;
+    border: solid 1px red;
+}
+
+#iss_description{
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+.preview-img-info{
+    width: 120px;
+    height: 120px;
+}
+
+.block-info{
+    border: solid 1px black;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    max-height: 200px;
+    margin-bottom: 20px;
+}
+
+.block-info a{
+    text-decoration: none;
+    color: black;
+}
+
+.block-info:hover{
+    border: solid 1px red;
+    cursor: pointer;
+    color: red; 
+}
+
+.block-info:hover a{
+    color: red;  
+}
+
+
+.infos-row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.block-info-label{
+    max-width: 120px;
+    text-align: center;
+    font-size: 14px;
+}
+
+#html-form-db p{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: Arial;
+    font-size: 20px;
+}
+
+#html-form-db a{
+    color: red;
+    border: none;
+}
+
+#html-form-db a:hover{
+    color: red;
+    border: none;
+}
+
+#block-info-main-img{
+    margin-bottom: 25px;
+    margin-top: 25px;
+    display: block; /* Блочный элемент (для старых браузеров) */
+    text-align: center;
+}
+
+#info-main-img{
+    width: 270px;
+    height: 270px;
+}
+
+.info-materials{
+    margin-bottom: 100px;
+}
+
+.info-materials li{
+    margin-bottom: 15px;
+}
+
+.form-add-material{
+    margin-top: 25px;
+}
+
+.sub-title-add{
+    color:red;
+}
+
+#add-block-inputs{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+#add-block-inputs input{
+    margin-bottom: 15px;
+    max-width: 300px;
+}
+
+.submit-btn{
+    background-color: #00C853;
+    color: white;
+    font-family: "Joystix";
+    padding: 10px;
+    border: 1px solid #00C853;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+.pagination{
+    margin-top: 25px;
+    margin-bottom: 50px;
+}
+
+.delete-btn{
+    background-color: red;
+    color: white;
+    font-family: "Joystix";
+    padding: 5px;
+    border: 1px solid red;
+    font-size: 12px;
+}
+
+.delete-btn:hover{
+    cursor: pointer;
+    background-color: black;
+    color: red;
+    font-family: "Joystix";
+    padding: 5px;
+    border: 1px solid black;
+    font-size: 12px;
+}
+
+.choise-delete-material{
+    display: flex;
+    flex-direction: row;
+}
+
+.cancel-delete-btn{
+    text-decoration: none;
+    color: black;
+    font-family: "Joystix";
+    padding: 5px;
+    border: 1px solid black;
+    font-size: 12px;
+}
+
+.cancel-delete-btn:hover{
+    cursor: pointer;
+    text-decoration: none;
+    color: blue;
+    font-family: "Joystix";
+    padding: 5px;
+    border: 1px solid blue;
+    font-size: 12px;
+}
+
+.submit-delete-btn{
+    background-color: red;
+    color: white;
+    font-family: "Joystix";
+    padding: 5px;
+    border: 1px solid red;
+    font-size: 12px; 
+}
+
+.submit-delete-btn:hover{
+    cursor: pointer;
+    background-color: black;
+    color: red;
+    font-family: "Joystix";
+    padding: 5px;
+    border: 1px solid black;
+    font-size: 12px; 
+}
+
+.choise-delete-material{
+    margin-top: 25px;
+}
+
+.delete-btns{
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.search-input{
+    text-align: center;
+    
+    position: fixed; /* Фиксированное положение */
+    left: 0; top: 70px; 
+    width: 100%;
+    background-color: black;
+    padding: 8px;
+}
+
+#search-input{
+    width: 250px;
+    height: 25px;
+    border: 3px solid #696969;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Joystix";
+}
+
+#search-input:hover{
+    border: 3px solid red;
+}
+
+#search-input:focus{
+    border: 3px solid red;
+}
+
+#search-btn{
+    padding: 6px;
+    background-color: #696969;
+    font-family: "Joystix";
+    font-size: 14px;
+    font-weight: bold;
+    border: 3px solid #696969;
+    color: white;
+}
+
+#search-btn:hover{
+    background-color: red;
+    border: 3px solid red;
+    color: black;
+    cursor:pointer;
+}
+
+.search-card{
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    margin-top: 25px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.search-block a{
+    text-decoration: none;
+    color: black;
+}
+
+
+.search-card-discreption{
+    font-size: 12px;
+    color: #696969;
+}
+
+.search-card:hover{
+    background-color: red;
+    color: white;
+    cursor: pointer;
+
+    .search-card-discreption{
+        color: black;
+    }
+}
+
+.search-card-title{
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.log-row{
+    font-size: 12px;
+    margin-bottom: 4px;
+    border: 1px solid black;
+}
+
+.logs{
+    margin-top: 15px;
+}
+
+
+.pagination-logs{
+    padding-top: 15px;
+}
+
+.pagination-logs a{
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+}
+
+.pagination-logs a:hover{
+    color: red;
+    border: 1px solid red;
+}
+
+.log-links-on-info{
+    text-decoration: none;
+    color: black;
+}
+
+.log-links-on-info:hover{
+    color: red;
+}
+
+/* конец стиля блока контента страницы */
+
+
+/* стиль подвала сайта */
+footer {
+    position: fixed; /* Фиксированное положение */
+    left: 0; bottom: 0; /* Левый нижний угол */
+    color: white; /* Цвет текста */
+    width: 100%; /* Ширина слоя */
+    background-color: black;
+    text-align: center;
+    margin-top: 25px;
+    font-size: 10px;
+    word-break: break-all;
+    height: 25px;
+}
+
+#footer-text{
+    margin-top: 5px;
+}
+
+/* конец стиля подвала сайта  */
+
+/* медия запросы для адаптивности  */
+@media screen and (max-width: 900px){
+    #footer-text{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 901px){
+    #footer-text-small{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1400px){
+    #nav-links a{
+        font-size: 12px;
+    }
+
+    .materials-list{
+        ul{
+            li{
+                a{
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1100px){
+    #nav-links a{
+        display: none;
+    }
+
+    #admin-panel{
+        display: none;
+    }
+
+    #vertical-menu{
+        visibility: visible;
+    }
+
+    #nav-logo{
+        margin-left: 5%;
+    }
+
+
+
+    .materials-list{
+        ul{
+            li{
+                a{
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 900px){
+    .materials-list{
+        ul{
+            li{
+                a{
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 700px){
+    .materials-list{
+        ul{
+            li{
+                a{
+                    font-size: 7px;
+                }
+            }
+        }
+    }
+
+    .change-info-link{
+        font-size: 12px;
+    }
+
+    #open-info-main-img{
+        font-size: 8px;
+    }
+
+    #back-link{
+        font-size: 12px; 
+    }
+
+    #name-site div{
+        font-size: 10px;
+    }
+
+    #nav-logo{
+        margin-left: 1%;
+    }
+
+}
+
+@media screen and (max-width: 400px){
+
+    #search-input{
+       width: 175px; 
+    }
+}

@@ -1,0 +1,25 @@
+{% extends 'wiki/base.html' %}
+
+{% block title %}
+    Резлуьтат поиска по {{ searh_query }}
+{% endblock %}
+
+
+{% block content %}
+    <h1 id="page-name">Результаты поиска по <span style="color: red;">{{ searh_query }}</span></h1>
+
+    <div class="search-block">
+    {% if results_info %}
+        {% for i in results_info %}
+        <a href="{% url 'wiki:result_search' i.id %}">
+            <div class="search-card">
+                <div class="search-card-title">{{ i.i_name }}</div>
+                <div class="search-card-discreption">{{ i.i_text }}</div>
+            </div>
+        </a>
+        {% endfor %}
+    {% else %}
+        <p>По вашему запросу нихуя нет...</p>
+    {% endif %}
+    </div>
+{% endblock %}

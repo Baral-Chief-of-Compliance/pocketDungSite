@@ -1,0 +1,111 @@
+{% extends 'wiki/base.html' %}
+{% load static %}
+
+{% block title %}
+    Статья о {{ i_name}}
+{% endblock %}
+
+
+
+{% block content %}
+<div id="back-link">
+    {% comment %} идентификатор записи {% endcomment %}
+    <input id="i_id-value" type="hidden" value={{ i_id }}></input>
+
+    <div id="back-link">
+        <a href="{% url 'wiki:InfoSubSectionDetails' ic_url iss_url %}" >&#8592; Назад к подразделу</a>
+    </div>
+
+    <h1 id="page-name"><span style="color: red">{{ i_name }}</span></h1>
+
+    <h3>Дата создания: {{ i_date_creation }}</h3>
+
+    <div id="block-info-main-img">
+    {% if i_img %}
+        <img id="info-main-img" src={{ i_img }} />
+
+        <div id="open-info-main-img"><a target="_blank" href={{ i_img }}>Открыть картинку в полном размере</a></div>
+    {% else %}
+        <img id="info-main-img" src={% static 'wiki/notimg.svg'%}>
+    {% endif %}
+    </div>
+
+    <h2 class="sub-titel">Описание:</h2>
+
+    <a class="change-info-link" href="/admin/wiki/info/{{ i_id }}/change">редактировать статью</a>
+
+    <div id="html-form-db">{{ i_text|safe }}</div>
+
+    <h2 class="sub-titel">Материалы:</h2>
+
+    <div class="info-materials">
+        {% if materials %}
+
+            <div class="materials-list">
+                <ul>
+                {% for m in page_obj %}
+                {# Each "contact" is a Contact model object. #}
+                    <li><a target="_blank" href="{{ m.m_file.url }}"><span>Название: </span> <span style="color: red;">{{ m.m_name }}</span> <span>Дата: </span> <span style="color: red;">{{m.m_date_add}}</span></a> <a href="{% url 'wiki:deleteMaterial' ic_url iss_url i_id m.pk %}" class="delete-btn">Удалить</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+        
+            <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1">&laquo; первая</a>
+                        <a href="?page={{ page_obj.previous_page_number }}">назад</a>
+                    {% endif %}
+            
+                    <span class="current">
+                        СТРАНИЦА {{ page_obj.number }} ИЗ {{ page_obj.paginator.num_pages }}.
+                    </span>
+            
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">вперёд</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}">последняя &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+
+            </ul>
+        {% else %}
+            К это статье материалов к игре пока нет.
+        {% endif %}
+
+        {% comment %} форма для добавления материала {% endcomment %}
+        <div class="form-add-material">
+            <form  enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                <fieldset >
+                    <legend><h2 class="sub-title-add">Добавить материал</h2></legend>
+                    {{ form.as_p }}
+                </fieldset>
+
+                <input class="submit-btn" type="submit" value="Добавить материал">
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% comment %} для сохранения значения scroll {% endcomment %}
+<script type="text/javascript">
+    {% comment %} получаем id со скрытого элемента {% endcomment %}
+    var i_id = document.getElementById('i_id-value').value
+
+    var scrollValue = sessionStorage.getItem(i_id)
+    
+    if (scrollValue) {
+        window.scrollBy(0, scrollValue)
+    }
+
+    window.addEventListener('scroll', function () {
+        sessionStorage.setItem(i_id, window.pageYOffset)
+      });
+</script>
+
+{% endblock %}
+
+

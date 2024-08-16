@@ -1,0 +1,5 @@
+FROM nginx:alpine
+
+RUN mkdir -p /home/app/djangoApp
+
+COPY ./conf.d /etc/nginx/conf.d

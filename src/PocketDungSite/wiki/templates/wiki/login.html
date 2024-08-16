@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = "ru">
+    <head>
+        <link rel="icon" href= {% static 'wiki/favicon.ico' %}><!-- 32×32 -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>PocketDung Wiki - Вход</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel = "stylesheet" href = {% static 'wiki/login.css' %} type = "text/css">
+    </head>
+    <body>
+        <div class="login-card">
+
+            <div class="login-card-logo-block">
+                <div class="login-card-logo-block-img">
+                    <img src={% static 'wiki/logo64x64.svg' %}>
+                </div>
+                <div class="login-card-logo-block-label">
+                    <div>WIKI</div>
+                    <div>PocketDung</div>
+                </div>
+            </div>
+
+            <div class="login-card-form">
+                <form  action="{% url 'wiki:login'%}" method="post">
+                    {% csrf_token %}
+                    <input name="login" class="login-card-form-input" id="login" type="text" placeholder="Логин">
+                    <input name="password" class="login-card-form-input" id="password" type="password" placeholder="Пароль">
+                    <input id="submit" type="submit" value="Войти">
+                </form>
+            </div> 
+        </div>
+    </body>
+</html>

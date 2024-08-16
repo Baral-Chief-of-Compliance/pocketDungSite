@@ -1,0 +1,60 @@
+@font-face {
+    font-family: "Joystix";
+    src: url("./joystix_monospace.ttf");
+    font-style: normal;
+    font-weight: normal;
+}
+
+*{
+    margin: 0;
+	padding: 0;
+    font-family: "Joystix";
+}
+
+body{
+    background-color: black;
+}
+
+.login-card{
+    background-color: red;
+    padding: 20px;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15%;
+}
+
+.login-card-logo-block{
+    display: flex;
+    flex-direction: row;
+}
+
+.login-card-logo-block-img{
+    margin-right: 10px;
+}
+
+.login-card-logo-block-label{
+    color: white;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.login-card-form form{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+
+    input {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+}
+
+
+.login-card-form-input{
+    padding: 5px;
+}
+

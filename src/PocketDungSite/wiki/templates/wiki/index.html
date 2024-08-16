@@ -1,0 +1,133 @@
+{% extends 'wiki/base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Главная
+{% endblock %}
+
+
+{% block content %}
+    <h1 id="page-name">Главная страница PocketDung WIKI</h1>
+
+    <p>Да-да, парни, не удивляйтесь. Этот наш личный вики для создания контента по игре</p>
+
+    <p style="margin-top:10px;">На данном сайте. Можно создавать разделы, подразделы wiki, а также статьи в каждом подразделе, которые будут вести описание мира, персонажей </p>
+
+    <p style="margin-top:10px;">Но самая главная особенность в том, что под каждую статью можно грузить материалы, например спрайты или музыку.</p>
+
+    <p style="margin-top:10px;">Что позволит нам держать все материалы игры, да и сами версии игры в одном структурированном месте.</p>
+
+    <p style="margin-top:10px; color: red">Так что работаем парни.</p>
+
+    <h3 style="margin-top: 50px;">Статей на сайте: <span style="color: red;">{{ info_count }}</span> </h3> 
+    <h3 style="margin-top: 10px;">Материалов на сайте: <span style="color: red;">{{ materials_count }}</span></h3>
+
+    <h3 style="margin-top: 30px">История загрузки материалов через сайт:</h3>
+    <h3>Всего их: {{ logM_count }}</h3>
+    <div class="logs">
+
+        {% for l in page_obj_material_log %}
+            <div class="log-row">
+                <span style="color: #696969;">название:</span> 
+                <span>{{ l.m_name }}</span> 
+                <span style="color: #696969;">операция:</span> 
+                <span>{{ l.ml_action}}</span> 
+                <span style="color: #696969;">время:</span>
+                <span>{{ l.ml_date}}</span> 
+                <span style="color: #696969;">кем:</span>
+                <span>{{ l.user}}</span> 
+                <span style="color: #696969;">статья:</span>
+                <span><a class="log-links-on-info" href="{% url 'wiki:result_search' l.ml_i_id %}">{{ l.ml_i_id }}</a></span> 
+            </div>
+        {% endfor %}
+
+
+        <div class="pagination-logs">
+            <span class="step-links">
+                {% if page_obj_material_log.has_previous %}
+                    <a href="?page_material_log=1">&laquo; первая</a>
+                    <a href="?page_material_log={{ page_obj_material_log.previous_page_number }}">назад</a>
+            
+                {% endif %}
+            
+                <span class="current">
+            
+                    СТРАНИЦА {{ page_obj_material_log.number }} ИЗ {{ page_obj_material_log.paginator.num_pages }}.
+            
+                </span>
+            
+                {% if page_obj_material_log.has_next %}
+            
+                    <a href="?page_material_log={{ page_obj_material_log.next_page_number }}">вперёд</a>
+            
+                    <a href="?page_material_log={{ page_obj_material_log.paginator.num_pages }}">последняя &raquo;</a>
+            
+                {% endif %}
+            
+            </span>
+            
+        </div>
+
+
+    <h3 style="margin-top: 30px">История изменений через админ панель:</h3>
+    <h3>Всего их: {{ logs_count }}</h3>
+    <div class="logs">
+        {% for l in page_obj %}
+            <div class="log-row">
+                <span style="color: #696969;">название:</span> 
+                <span>{{ l.object_repr }}</span> 
+                <span style="color: #696969;">тип:</span> 
+                <span>{{ l.type }} </span>
+                <span style="color: #696969;">операция:</span> 
+                <span >{{ l.action_flag}}</span> 
+                <span style="color: #696969;">время:</span>
+                <span >{{ l.date}}</span> 
+                <span style="color: #696969;">кем:</span>
+                <span >{{ l.user_id}}</span> 
+            </div>
+        {% endfor %}
+
+
+        <div style="margin-bottom: 50px;" class="pagination-logs">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; первая</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">назад</a>
+            
+                {% endif %}
+            
+                <span class="current">
+            
+                    СТРАНИЦА {{ page_obj.number }} ИЗ {{ page_obj.paginator.num_pages }}.
+            
+                </span>
+            
+                {% if page_obj.has_next %}
+            
+                    <a href="?page={{ page_obj.next_page_number }}">вперёд</a>
+            
+                    <a href="?page={{ page_obj.paginator.num_pages }}">последняя &raquo;</a>
+            
+                {% endif %}
+            
+            </span>
+            
+        </div>
+    </div>
+
+    {% comment %} для сохранения значения scroll {% endcomment %}
+    <script type="text/javascript">
+        {% comment %} получаем id со скрытого элемента {% endcomment %}
+        var scrollValue = sessionStorage.getItem("index-page")
+        
+        if (scrollValue) {
+            window.scrollBy(0, scrollValue)
+        }
+
+        window.addEventListener('scroll', function () {
+            sessionStorage.setItem("index-page", window.pageYOffset)
+        });
+    </script>
+
+{% endblock %}

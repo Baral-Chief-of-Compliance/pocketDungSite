@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = "ru">
+    <head>
+        <link rel="icon" href= {% static 'wiki/favicon.ico' %}><!-- 32×32 -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>PocketDung Wiki - {% block title %}{% endblock %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel = "stylesheet" href = {% static 'wiki/style.css' %} type = "text/css">
+    </head>
+    <body>
+        <nav>
+            <div id="nav-logo">
+                <img src={% static 'wiki/logo64x64.svg' %}>
+            </div>
+
+            <div id="name-site"> 
+                <a href="{% url 'wiki:index' %}">
+                    <div>WIKI</div>
+                    <div>PocketDung</div>
+                </a>
+            </div>
+
+            <div id="nav-links">
+                {% for ic in allInfoChapters %}
+                    <a href="{% url 'wiki:InfoChapterDetails' ic.ic_url %}" >{{ ic.ic_name }}</a>
+                {% endfor %}
+            </div>
+
+            <div id="admin-panel"> 
+                <a target="_blank" href="/admin">
+                    <div>Админ</div>
+                    <div>Панель</div>
+                </a>
+            </div>
+
+            <div id="user-block">
+            {% if request.user.is_authenticated  %}
+                <div id="user-name">{{ request.user }}</div>
+                <div><a href="{% url 'wiki:logout' %}" id="user-exit">Выйти</a></div>
+            {% endif %}
+            </div>
+
+            <div id="vertical-menu"> 
+                &#9776;
+            </div>
+
+        </nav>
+
+        {% comment %} строка для поиска {% endcomment %}
+        <div class="search-input">
+            <form action="{% url 'wiki:search' %}" method="GET">
+                <div>
+                <input id="search-input" type="text" name="q" placeholder="Шо надо?">
+                <input id="search-btn" type="submit" value="Поиск"></input>
+                </div>
+            </form>
+        </div>
+
+        {% comment %} меню вертикальное {% endcomment %}
+        <div id="vertical-links" class="vertical-links">
+            {% for ic in allInfoChapters %}
+                <div>
+                    <a href="{% url 'wiki:InfoChapterDetails' ic.ic_url %}" >{{ ic.ic_name }}</a>
+                </div>
+            {% endfor %}
+
+                <div>
+                    <a href="/admin"> Админ Панель</a>
+                </div>
+        </div>
+
+        {% comment %} main сайта {% endcomment %}
+        <main class="content">
+            {% block content %}
+
+            {% endblock %}
+        </main>
+
+
+        {% comment %} подвал сайта {% endcomment %}
+        <footer>
+            <div id="footer-text">
+            © PocketDung 2024  В душе не ебу, что с защитой прав
+            </div>
+
+            <div id="footer-text-small">
+                © PocketDung 2024 
+            </div>
+        </footer>
+    </body>
+
+    <script>
+        var menu_btn = document.getElementById('vertical-menu'); 
+
+        menu_btn.onclick = function(){
+            var links = document.getElementById('vertical-links');
+
+            if (links.className === "vertical-links"){
+                links.className +="-open";
+            } else {
+                links.className = "vertical-links"
+            }
+        }
+    </script>
+</html>

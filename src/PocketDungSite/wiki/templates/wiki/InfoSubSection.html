@@ -1,0 +1,43 @@
+{% extends 'wiki/base.html' %}
+{% load static %}
+
+{% block title %}
+    Подраздел {{ iss_name }}
+{% endblock %}
+
+
+{% block content %}
+    <div id="back-link">
+        <a href="{% url 'wiki:InfoChapterDetails' ic_url %}" >&#8592; Назад к разделу: <span style='color:red;'>{{ic_name}}</span></a>
+    </div>
+
+    <h1 id="page-name">Подраздел WIKI: <span style="color: red">{{ iss_name }}</span></h1>
+
+    <div id="iss_description">{{iss_description}}</div>
+
+    <h2 class="sub-titel">Его статьи:</h2>
+
+    {% if result_infos %}
+        <div class="infos-row">
+            {% for ri in result_infos %}
+                <div class="block-info">
+                    <a href="{% url 'wiki:InfoDetails' ic_url iss_url ri.i_id  %}">
+                    {% if ri.i_img%}
+                        <div><img class='preview-img-info' src="{{ ri.i_img }}"></div>
+                    {% else %}
+                        <div><img class='preview-img-info' src={% static 'wiki/notimg.svg' %}></div>
+                    {% endif %}
+
+                    <div class="block-info-label">{{ ri.i_name }}</div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p style="margin-bottom:10px;">На данный момент у этого подраздела, нет статей</p>
+
+        <p style="margin-bottom:10px;">Чтобы создать их, необходимо перейти в Админ Панель</p>
+
+        <p style="margin-bottom:10px;">Если вы не в курсе, как это делать, то советую перейти в раздел <a href='{% url 'wiki:InfoChapterDetails' 'instructions' %}'>Инструкции<a/> </p>
+    {% endif %}
+{% endblock %}
