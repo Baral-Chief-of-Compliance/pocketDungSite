@@ -230,7 +230,7 @@ def InfoSubSectionDetails(request, ic_url: str, iss_url: str) -> HttpResponse:
             "ic_url": ic_url,
             "result_infos": result_infos
         },
-        template_name="wiki/infoSubSection.html"
+        template_name="wiki/InfoSubSection.html"
         )
 
 
@@ -303,7 +303,7 @@ def InfoDetails(request, ic_url: str, iss_url: str, i_id: int) -> HttpResponse:
             "form": form,
             "page_obj": page_obj
         },
-        template_name="wiki/info.html"
+        template_name="wiki/Info.html"
     )
 
 
