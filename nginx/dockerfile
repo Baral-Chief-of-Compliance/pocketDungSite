@@ -1,5 +1,6 @@
 FROM nginx:alpine
 
 RUN mkdir -p /home/app/djangoApp
+RUN mkdir -p /home/app/error_pages
 
 COPY ./conf.d /etc/nginx/conf.d

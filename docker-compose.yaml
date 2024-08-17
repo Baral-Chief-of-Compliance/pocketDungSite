@@ -36,6 +36,7 @@ services:
 
     volumes:
       - ./src/:/home/app/djangoApp
+      - ./eror_pages/:/home/app/error_pages
     depends_on:
       - django-app
 

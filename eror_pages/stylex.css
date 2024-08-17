@@ -1,0 +1,22 @@
+@font-face {
+    font-family: "Joystix";
+    src: url("./joystix_monospace.ttf");
+    font-style: normal;
+    font-weight: normal;
+}
+
+*{
+    padding: 0%;
+    margin: 0%;
+    font-family: "Joystix";
+}
+
+body{
+    background-color: black;
+    color: white;
+}
+
+.info-block{
+    margin-top: 50px;
+    margin-left: 50px;
+}
